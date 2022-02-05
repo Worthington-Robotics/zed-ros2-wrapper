@@ -4181,7 +4181,7 @@ void ZedCamera::callback_pubVideoDepth()
   {
     rcutils_reset_error();
     RCLCPP_DEBUG(get_logger(), "publishImages: Exception while counting subscribers");
-    return false;
+    return;
   }
     RCLCPP_DEBUG_ONCE(get_logger(), "Video Depth callback called");
 
