@@ -2900,32 +2900,32 @@ bool ZedCamera::startObjDetect()
     RCLCPP_INFO(get_logger(), "*** Starting Object Detection ***");
 
     sl::ObjectDetectionParameters od_p;
-    od_p.enable_mask_output = false;
+    od_p.enable_mask_output = true;
     od_p.enable_tracking = mObjDetTracking;
     od_p.image_sync = true;
-    od_p.detection_model = mObjDetModel;
+    od_p.detection_model = sl::DETECTION_MODEL::CUSTOM_BOX_OBJECTS;
     od_p.enable_body_fitting = mObjDetBodyFitting;
     od_p.body_format = mObjDetBodyFmt;
 
-    mObjDetFilter.clear();
-    if (mObjDetPeopleEnable) {
-        mObjDetFilter.push_back(sl::OBJECT_CLASS::PERSON);
-    }
-    if (mObjDetVehiclesEnable) {
-        mObjDetFilter.push_back(sl::OBJECT_CLASS::VEHICLE);
-    }
-    if (mObjDetBagsEnable) {
-        mObjDetFilter.push_back(sl::OBJECT_CLASS::BAG);
-    }
-    if (mObjDetAnimalsEnable) {
-        mObjDetFilter.push_back(sl::OBJECT_CLASS::ANIMAL);
-    }
-    if (mObjDetElectronicsEnable) {
-        mObjDetFilter.push_back(sl::OBJECT_CLASS::ELECTRONICS);
-    }
-    if (mObjDetFruitsEnable) {
-        mObjDetFilter.push_back(sl::OBJECT_CLASS::FRUIT_VEGETABLE);
-    }
+    // mObjDetFilter.clear();
+    // if (mObjDetPeopleEnable) {
+    //     mObjDetFilter.push_back(sl::OBJECT_CLASS::PERSON);
+    // }
+    // if (mObjDetVehiclesEnable) {
+    //     mObjDetFilter.push_back(sl::OBJECT_CLASS::VEHICLE);
+    // }
+    // if (mObjDetBagsEnable) {
+    //     mObjDetFilter.push_back(sl::OBJECT_CLASS::BAG);
+    // }
+    // if (mObjDetAnimalsEnable) {
+    //     mObjDetFilter.push_back(sl::OBJECT_CLASS::ANIMAL);
+    // }
+    // if (mObjDetElectronicsEnable) {
+    //     mObjDetFilter.push_back(sl::OBJECT_CLASS::ELECTRONICS);
+    // }
+    // if (mObjDetFruitsEnable) {
+    //     mObjDetFilter.push_back(sl::OBJECT_CLASS::FRUIT_VEGETABLE);
+    // }
 
     sl::ERROR_CODE objDetError = mZed.enableObjectDetection(od_p);
 
